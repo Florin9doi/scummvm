@@ -133,17 +133,29 @@ void MainMenu::enter() {
 		fbButton->setVisible(false);
 
 	_confirmingTuto = false;
-	TeLayout *panel = layout("panel");
 
+	TeLayout *panel = layout("panel");
 	if (panel) {
 		const Common::String panelTypoVal = value("panelTypo").toString();
 		for (auto *child : panel->childList()) {
 			TeTextLayout *childText = dynamic_cast<TeTextLayout *>(child);
 			if (!childText)
 				continue;
-			childText->setName(panelTypoVal + childText->name());
+			childText->setText(panelTypoVal + "$(" + childText->name() + ")");
 		}
 	}
+
+	TeLayout *buttons = layout("buttons");
+	if (buttons) {
+		const Common::String textAttributsVal = value("textAttributs").toString();
+		for (auto *child : buttons->childList()) {
+			TeTextLayout *childText = dynamic_cast<TeTextLayout *>(child);
+			if (!childText)
+				continue;
+			childText->setText(textAttributsVal + "$(" + childText->name() + ")");
+		}
+	}
+
 	setCenterButtonsVisibility(true);
 	TeITextLayout *versionNum = textLayout("versionNumber");
 	if (versionNum) {

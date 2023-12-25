@@ -79,6 +79,10 @@ _permanentHelp(true), _musicOn(true) {
 	case Common::Platform::kPlatformPS3:
 		platform = "PS3";
 		break;
+	case Common::Platform::kPlatformXbox360:
+		platform = "Xbox360";
+		core->fileFlagSystemSetFlag("version", "FullVersion");
+		break;
 	default:
 		error("Unsupported platform");
 	}

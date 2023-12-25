@@ -292,6 +292,44 @@ const ADGameDescription GAME_DESCRIPTIONS[] = {
 		GUIO1(GAMEOPTION_CORRECT_MOVIE_ASPECT)
 	},
 
+	// Xbox360
+	{
+		"syberia",
+		nullptr,
+		AD_ENTRY1s("filesBank.bin", "ceeadc24c5bcd2e659310a41e3d6224e", 1557557183),
+		Common::UNK_LANG,
+		Common::kPlatformXbox360,
+		ADGF_NO_FLAGS,
+		GUIO1(GAMEOPTION_CORRECT_MOVIE_ASPECT)
+	},
+	{
+		"syberia",
+		"Extracted",
+		AD_ENTRY1s("InGame.lua", "ada9915dfa637e1005a1684d451dec4d", 2195),
+		Common::UNK_LANG,
+		Common::kPlatformXbox360,
+		ADGF_NO_FLAGS,
+		GUIO1(GAMEOPTION_CORRECT_MOVIE_ASPECT)
+	},
+	{
+		"syberia2",
+		nullptr,
+		AD_ENTRY1s("filesBank.bin", "665983442ed7bf7fc8c0483f2577d45a", 1384462610),
+		Common::UNK_LANG,
+		Common::kPlatformXbox360,
+		ADGF_NO_FLAGS,
+		GUIO1(GAMEOPTION_CORRECT_MOVIE_ASPECT)
+	},
+	{
+		"syberia2",
+		"Extracted",
+		AD_ENTRY1s("InGame.lua", "ee54f9dd71b4f1f31946120c224a20f8", 3210),
+		Common::UNK_LANG,
+		Common::kPlatformXbox360,
+		ADGF_NO_FLAGS,
+		GUIO1(GAMEOPTION_CORRECT_MOVIE_ASPECT)
+	},
+
 	AD_TABLE_END_MARKER
 };
 

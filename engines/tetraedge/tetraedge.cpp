@@ -220,9 +220,13 @@ void TetraedgeEngine::configureSearchPaths() {
 	} else
 		_rootArchives.push_back(new Common::FSDirectory(gameDataDir, 10));
 
-	if (_gameDescription->platform == Common::Platform::kPlatformAndroid
+	bool isObb = (_gameDescription->platform == Common::Platform::kPlatformAndroid
 	    && strlen(_gameDescription->filesDescriptions[0].fileName) > 4
-	    && scumm_stricmp(_gameDescription->filesDescriptions[0].fileName + strlen(_gameDescription->filesDescriptions[0].fileName) - 4, ".obb") == 0) {
+	    && scumm_stricmp(_gameDescription->filesDescriptions[0].fileName + strlen(_gameDescription->filesDescriptions[0].fileName) - 4, ".obb") == 0)
+			  || (_gameDescription->platform == Common::Platform::kPlatformXbox360
+	    && scumm_stricmp(_gameDescription->filesDescriptions[0].fileName, "filesBank.bin") == 0);
+
+	if (isObb) {
 		ObbArchive *obb = ObbArchive::open(_gameDescription->filesDescriptions[0].fileName);
 		_rootArchives.push_back(obb);
 		SearchMan.add("obbarchive", obb, 0, false);
@@ -230,11 +234,15 @@ void TetraedgeEngine::configureSearchPaths() {
 }
 
 int TetraedgeEngine::getDefaultScreenWidth() const {
-	return gameIsAmerzone() ? 1280 : 800;
+	return gameIsAmerzone() ? 1280
+		 : gameIsHDTV() ? 1280
+		 : 800;
 }
 
 int TetraedgeEngine::getDefaultScreenHeight() const {
-	return gameIsAmerzone() ? 800 : 600;
+	return gameIsAmerzone() ? 800
+		 : gameIsHDTV() ? 720
+		 : 600;
 }
 
 bool TetraedgeEngine::onKeyUp(const Common::KeyState &state) {

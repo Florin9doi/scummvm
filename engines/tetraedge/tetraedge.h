@@ -177,6 +177,7 @@ public:
 	TeInputMgr *getInputMgr();
 	TetraedgeGameType gameType() const { return _gameType; }
 	bool gameIsAmerzone() const { return _gameType == kAmerzone; }
+	bool gameIsHDTV() const { return getGamePlatform() == Common::kPlatformPS3 || getGamePlatform() == Common::kPlatformXbox360; }
 
 	void openConfigDialog();
 	bool onKeyUp(const Common::KeyState &state);
